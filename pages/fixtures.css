@@ -1,0 +1,104 @@
+.fixtures {
+  background-color: rgb(25, 19, 19);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.games {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  list-style: none;
+
+  /* display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(3, 150px);
+  grid-gap: 150px 200px; */
+}
+
+.teams {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-style: solid;
+  border-radius: 8px;
+  border-color: #3882f6;
+  border-width: 2px;
+  padding: 30px;
+  margin: 30px;
+  width: 360px;
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.away {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.versus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  margin-top: 0px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* single fixture page */
+
+.gameInfo {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+.singleGame {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.homeTeam {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.awayTeam {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  list-style: none;
+}
+
+.homeStats {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.awayStats {
+  list-style: none;
+}
