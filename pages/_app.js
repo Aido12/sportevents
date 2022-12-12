@@ -1,5 +1,5 @@
 // import '../styles/globals.css';
-import './fixtures.css';
+import './styles.css';
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;

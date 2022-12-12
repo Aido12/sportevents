@@ -1,8 +1,8 @@
-import fs from 'node:fs';
+// import fs from 'node:fs';
 
-console.log('fileSystem', fs);
+// console.log('fileSystem', fs);
 
-export const data = [
+export const sportData = [
   {
     id: '1',
     season: 2022,

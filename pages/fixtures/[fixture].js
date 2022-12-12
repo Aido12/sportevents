@@ -6,9 +6,13 @@ export default function Fixture(props) {
         <li>Time: {props.singleData.timeVenueUTC}</li>
         <li>Date: {props.singleData.dateVenue}</li>
       </ul>
+      <h3>Status: {props.singleData.status.toUpperCase()}</h3>
+      <br />
       <div className="singleGame">
         <div className="homeTeam">
-          <h1>{props.singleData.homeTeam.officialName}</h1>
+          <h1>
+            {props.singleData.homeTeam?.officialName.toUpperCase() || 'TBD'}
+          </h1>
           <ul className="homeStats">
             <li>Goals: {props.singleData.result.homeGoals}</li>
           </ul>
@@ -17,7 +21,7 @@ export default function Fixture(props) {
           <h2>vs</h2>
         </div>
         <div className="awayTeam">
-          <h1>{props.singleData.awayTeam.officialName}</h1>
+          <h1>{props.singleData.awayTeam.officialName.toUpperCase()}</h1>
           <ul className="homeStats">
             <li>Goals: {props.singleData.result.awayGoals}</li>
           </ul>
@@ -28,11 +32,11 @@ export default function Fixture(props) {
 }
 
 export async function getServerSideProps(context) {
-  const { data } = await import('../util/data');
+  const { sportData } = await import('../util/data');
 
   const idFromUrl = context.query.fixture;
-
-  const singleData = data.find((data) => {
+  console.log(idFromUrl);
+  const singleData = sportData.find((data) => {
     return idFromUrl === data.id;
   });
   return {

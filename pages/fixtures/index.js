@@ -1,38 +1,51 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { sportData } from '../util/data.js';
 
-export default function Fixtures(props) {
-  const [name, setName] = useState('');
-  const [showName, setShowName] = useState(false);
+export default function Fixtures() {
+  const [date, setDate] = useState('');
+  const [homeTeam, setHomeTeam] = useState('');
+  const [awayTeam, setAwayTeam] = useState('');
+  const [matches, setMatches] = useState(sportData);
 
-  const handleInput = () => {
-    setShowName(true);
-  };
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    setMatches([
+      ...matches,
+      {
+        id: JSON.stringify(matches.length + 1),
+        dateVenue: date,
+        homeTeam: { officialName: homeTeam },
+        awayTeam: { officialName: awayTeam },
+      },
+    ]);
+  }
+  console.log('matches', matches);
   return (
     <div className="fixtures">
-      <h1>Fixtures</h1>
-      {/* <input
-        placeholder="player name"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <button onClick={() => handleInput()}> input</button>
-      {showName && <span>{name}</span>}
-      <Link href="/">home</Link> */}
+      <h1>AFC Champions League</h1>
       <ul className="games">
-        {props.data.map((data) => {
+        {matches.map((data) => {
           return (
             <div key={`fixture-li-${data.id}`} className="teams">
               <li>Date: {data.dateVenue}</li>
               <div>
                 <div className="home">
-                  <li>{data.homeTeam && data.homeTeam.officialName} - </li>
+                  <li>
+                    {data.homeTeam && data.homeTeam.officialName.toUpperCase()}{' '}
+                    -
+                  </li>
                   <li>{data.result && data.result.homeGoals}</li>
                 </div>
                 <div className="versus">
                   <span>vs</span>
                 </div>
                 <div className="away">
-                  <li>{data.awayTeam && data.awayTeam.officialName} - </li>
+                  <li>
+                    {data.awayTeam && data.awayTeam.officialName.toUpperCase()}{' '}
+                    -
+                  </li>
                   <li>{data.result && data.result.awayGoals}</li>
                 </div>
                 <div className="info">
@@ -45,17 +58,26 @@ export default function Fixtures(props) {
           );
         })}
       </ul>
+      <form onSubmit={handleSubmit}>
+        <input
+          value={date}
+          type="date"
+          placeholder="Date"
+          onChange={(e) => setDate(e.target.value)}
+        />
+        <input
+          value={homeTeam}
+          placeholder="Home Team"
+          onChange={(e) => setHomeTeam(e.target.value)}
+        />
+        <input
+          value={awayTeam}
+          placeholder="Away Team"
+          onChange={(e) => setAwayTeam(e.target.value)}
+        />
+        <button>add</button>
+      </form>
+      <Link href="/">home</Link>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const { data } = await import('../util/data');
-
-  console.log(data);
-  return {
-    props: {
-      data,
-    },
-  };
 }
