@@ -1,28 +1,21 @@
 import Link from 'next/link';
-import { useState } from 'react';
-
-const name = [
-  {
-    name: 'aidan',
-    last: 'ryan',
-  },
-  {
-    name: 'john',
-    last: 'ryan',
-  },
-];
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 export default function Home() {
-  const [newName, setNewName] = '';
-
-  function handleValidation(e) {
-    setNewName({ ...name, [e.target.name]: e.target.value });
-  }
   return (
     <div>
-      <h1>Hello World</h1>
-      <Link href="/fixtures">Fixtures</Link>
-      <Link href="/addEvent">addEvent</Link>
+      <Header />
+      <div className="main-page">
+        <div className="main-page-content">
+          <h2>About Us</h2>
+          <p>Info to come!</p>
+          <Link href="/fixtures" className="main-page-content-link">
+            Fixtures
+          </Link>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -1,15 +1,21 @@
-import Head from 'next/head';
 import Link from 'next/link';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 export default function Home() {
   return (
     <div>
-      <h1>Hello World</h1>
-      <div className="Navbar">
-        <Link href="/fixtures">Fixtures</Link>
-        <Link href="/aboutUs">about</Link>
-        <Link href="/contact">contact</Link>
+      <Header />
+      <div className="main-page">
+        <div className="main-page-content">
+          <h2>Welcome to ACL Guide</h2>
+          <p>A guide to ACL Fixtures</p>
+          <Link href="/fixtures" className="main-page-content-link">
+            Fixtures
+          </Link>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }

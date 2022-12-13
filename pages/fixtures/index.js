@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 import { sportData } from '../util/data.js';
 
 export default function Fixtures() {
@@ -21,63 +23,97 @@ export default function Fixtures() {
       },
     ]);
   }
-  console.log('matches', matches);
+
+  const handelDelete = (index) => {
+    matches.splice(index, 1);
+    setMatches([...matches]);
+  };
   return (
-    <div className="fixtures">
-      <h1>AFC Champions League</h1>
-      <ul className="games">
-        {matches.map((data) => {
-          return (
-            <div key={`fixture-li-${data.id}`} className="teams">
-              <li>Date: {data.dateVenue}</li>
-              <div>
-                <div className="home">
-                  <li>
-                    {data.homeTeam && data.homeTeam.officialName.toUpperCase()}{' '}
-                    -
-                  </li>
-                  <li>{data.result && data.result.homeGoals}</li>
-                </div>
-                <div className="versus">
-                  <span>vs</span>
-                </div>
-                <div className="away">
-                  <li>
-                    {data.awayTeam && data.awayTeam.officialName.toUpperCase()}{' '}
-                    -
-                  </li>
-                  <li>{data.result && data.result.awayGoals}</li>
-                </div>
-                <div className="info">
-                  <li>
-                    <Link href={`/fixtures/${data.id}`}>more info</Link>
-                  </li>
+    <div>
+      <Header />
+      <div className="fixtures">
+        <ul className="games">
+          {matches.map((data, index) => {
+            return (
+              <div key={`fixture-li-${data.id}`} className="teams">
+                <button
+                  className="delete-button"
+                  type="button"
+                  onClick={() => handelDelete(index)}
+                >
+                  x
+                </button>
+                <li>Date: {data.dateVenue}</li>
+                <div>
+                  <div className="home">
+                    <li>
+                      {data.homeTeam &&
+                        data.homeTeam.officialName.toUpperCase()}
+                      -
+                    </li>
+                    <li>{(data.result && data.result.homeGoals) || 'tbd'}</li>
+                  </div>
+                  <div className="versus">
+                    <span>vs</span>
+                  </div>
+                  <div className="away">
+                    <li>
+                      {data.awayTeam &&
+                        data.awayTeam.officialName.toUpperCase()}
+                      -
+                    </li>
+                    <li>{data.result && data.result.awayGoals}</li>
+                  </div>
+                  <div className="info">
+                    <li>
+                      <Link className="more-info" href={`/fixtures/${data.id}`}>
+                        more info
+                      </Link>
+                    </li>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </ul>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={date}
-          type="date"
-          placeholder="Date"
-          onChange={(e) => setDate(e.target.value)}
-        />
-        <input
-          value={homeTeam}
-          placeholder="Home Team"
-          onChange={(e) => setHomeTeam(e.target.value)}
-        />
-        <input
-          value={awayTeam}
-          placeholder="Away Team"
-          onChange={(e) => setAwayTeam(e.target.value)}
-        />
-        <button>add</button>
-      </form>
-      <Link href="/">home</Link>
+            );
+          })}
+        </ul>
+        <h2>Add Event Here</h2>
+        <form onSubmit={handleSubmit} className="form">
+          <label>
+            Enter Date:
+            <br />
+            <input
+              className="form-input"
+              value={date}
+              type="date"
+              placeholder="Date"
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </label>
+          <label>
+            Enter Home Team:
+            <br />
+            <input
+              className="form-input"
+              value={homeTeam}
+              placeholder="Home Team"
+              onChange={(e) => setHomeTeam(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Enter Away Team:
+            <br />
+            <input
+              className="form-input"
+              value={awayTeam}
+              placeholder="Away Team"
+              onChange={(e) => setAwayTeam(e.target.value)}
+            />
+          </label>
+          <button className="submit-button">Add Event</button>
+        </form>
+      </div>
+      <Footer />
     </div>
   );
 }

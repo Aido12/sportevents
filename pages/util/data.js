@@ -1,7 +1,3 @@
-// import fs from 'node:fs';
-
-// console.log('fileSystem', fs);
-
 export const sportData = [
   {
     id: '1',

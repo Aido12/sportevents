@@ -14,7 +14,7 @@ export default function Fixture(props) {
             {props.singleData.homeTeam?.officialName.toUpperCase() || 'TBD'}
           </h1>
           <ul className="homeStats">
-            <li>Goals: {props.singleData.result.homeGoals}</li>
+            <li>Goals: {props.singleData.result?.homeGoals || ''}</li>
           </ul>
         </div>
         <div>
