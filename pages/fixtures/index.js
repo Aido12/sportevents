@@ -29,7 +29,7 @@ export default function Fixtures() {
     setMatches([...matches]);
   };
   return (
-    <div>
+    <div className="fixtures-header">
       <Header />
       <div className="fixtures">
         <ul className="games">
@@ -51,7 +51,7 @@ export default function Fixtures() {
                         data.homeTeam.officialName.toUpperCase()}
                       -
                     </li>
-                    <li>{(data.result && data.result.homeGoals) || 'tbd'}</li>
+                    <li>{(data.result && data.result.homeGoals) || ''}</li>
                   </div>
                   <div className="versus">
                     <span>vs</span>
@@ -62,7 +62,7 @@ export default function Fixtures() {
                         data.awayTeam.officialName.toUpperCase()}
                       -
                     </li>
-                    <li>{data.result && data.result.awayGoals}</li>
+                    <li>{(data.result && data.result.awayGoals) || ''}</li>
                   </div>
                   <div className="info">
                     <li>
@@ -99,7 +99,6 @@ export default function Fixtures() {
               onChange={(e) => setHomeTeam(e.target.value)}
             />
           </label>
-
           <label>
             Enter Away Team:
             <br />

@@ -8,8 +8,8 @@ export default function Home() {
       <Header />
       <div className="main-page">
         <div className="main-page-content">
-          <h2>Welcome to ACL Guide</h2>
-          <p>A guide to ACL Fixtures</p>
+          <h2>&#9917; Welcome to AFC Guide</h2>
+          <p>A guide to AFC Champions League Fixtures</p>
           <Link href="/fixtures" className="main-page-content-link">
             Fixtures
           </Link>

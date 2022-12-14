@@ -26,6 +26,18 @@
   cursor: pointer;
 }
 
+@media (max-width: 600px) {
+  .header-main {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar {
+    margin-top: -4px;
+  }
+}
+
 /* footer */
 
 .footer-main {
@@ -82,11 +94,27 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .main-page {
+    height: 100%;
+  }
+  .main-page-content {
+    font-size: 12px;
+    width: auto;
+    margin-bottom: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .main-page-content-link {
+    font-size: 14px;
+  }
+}
+
 /* fixtures index page */
 
 .fixtures {
-  width: 100%;
-  height: auto;
+  height: 100%;
   background-color: rgb(25, 19, 19);
   color: white;
   display: flex;
@@ -207,13 +235,54 @@
   border-width: 10px;
 }
 
+@media (max-width: 600px) {
+  .fixtures-header {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+  .teams {
+    font-size: 18px;
+    margin-left: 8px;
+  }
+  .form {
+    font-size: 20px;
+    margin-left: 6px;
+  }
+}
+
 /* single fixture page */
+.single-fixture-main {
+  background-color: rgb(25, 19, 19);
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.single-fixture-content {
+  width: 50%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-radius: 8px;
+  border-color: #3882f6;
+  border-width: 2px;
+  margin-top: 60px;
+  margin-left: 380px;
+  margin-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
 
 .gameInfo {
   list-style: none;
   display: flex;
   justify-content: space-around;
 }
+
 .singleGame {
   display: flex;
   justify-content: space-around;
@@ -230,15 +299,72 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  list-style: none;
 }
 
-.homeStats {
+.stats {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
   list-style: none;
 }
 
-.awayStats {
-  list-style: none;
+@media (max-width: 600px) {
+  .single-fixture-main {
+    height: 1650px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .single-fixture-content {
+    font-size: 28px;
+    width: 800px;
+    height: 900px;
+    margin: auto;
+  }
+  .single-fix-header {
+    width: 1200px;
+    font-size: 18px;
+  }
+  .gameInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* about page */
+
+.about-page {
+  background-color: rgb(25, 19, 19);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-page-content {
+  color: white;
+  width: 50%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-radius: 8px;
+  border-color: #3882f6;
+  border-width: 2px;
+  margin-top: 100px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+  .about-page {
+    height: 80vh;
+    font-size: 12px;
+  }
 }

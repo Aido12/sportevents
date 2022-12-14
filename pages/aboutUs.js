@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="main-page">
-        <div className="main-page-content">
+      <div className="about-page">
+        <div className="about-page-content">
           <h2>About Us</h2>
           <p>Info to come!</p>
           <Link href="/fixtures" className="main-page-content-link">
